@@ -13,12 +13,19 @@ class Categories(models.Model):
 
 
 class Goods(models.Model):
+
     Title = models.TextField(max_length=100)
     Description = models.TextField(max_length=500, blank=True, null=True)
     id_category = models.ForeignKey(Categories, verbose_name='Код', on_delete='SET_NULL', blank=True, null=True)
     Price = models.FloatField()
     Left_in_stock = models.IntegerField()
     Prime_cost = models.FloatField()
+
+class Photos(models.Model):
+    id_goods = models.ForeignKey(Goods, on_delete='CASCADE', related_name="photos")
+    Direction = models.TextField(max_length=500)
+    isMain = models.BooleanField(default=False)
+    alt = models.TextField(max_length=100, default='picture')
 
 
 class Marks(models.Model):
@@ -30,9 +37,6 @@ class MarkGoods(models.Model):
     id_goods = models.ForeignKey(Goods, on_delete='CASCADE')
 
 
-class Photos(models.Model):
-    id_goods = models.ForeignKey(Goods, on_delete='CASCADE')
-    Direction = models.TextField(max_length=500)
 
 
 TYPE_OF_DELIVERY = (
@@ -93,7 +97,7 @@ class Orders(models.Model):
     Phone = models.TextField(max_length=20)
     email = models.TextField(max_length=100, blank=True, null=True)
     id_delivery = models.ForeignKey(Delivery, blank=True, null=True, on_delete='SET_NULL')
-    status = models.CharField(max_length=30, choices=TYPE_OF_STATUS)
+    status = models.CharField(max_length=30, choices=TYPE_OF_STATUS, default='В корзине')
     id_promocode = models.ForeignKey(Promocodes, blank=True, null=True, on_delete='SET_NULL')
     Address = models.TextField(max_length=200)
     Index = models.TextField(max_length=6)
@@ -105,6 +109,23 @@ class Orders(models.Model):
 
 class GoodsInOrders(models.Model):
     id_goods = models.ForeignKey(Goods, on_delete='CASCADE')
-    Count = models.IntegerField()
+    Count = models.IntegerField(default=1)
     Price = models.FloatField()
-    id_order = models.ForeignKey(Orders, on_delete='CASCADE')
+    id_order = models.ForeignKey(Orders, on_delete='CASCADE', related_name='goodsInOrders')
+
+TYPE_OF_SIZE = (
+    ('XXS', 'XXSmall'),
+    ('XS', 'XSmall'),
+    ('S', 'Small'),
+    ('M', 'Medium'),
+    ('L', 'Large'),
+    ('XL', 'XLarge'),
+    ('XXL', 'XXLarge'),
+    ('NO', 'Without size'),
+)
+
+class Modifications(models.Model):
+    id_goods = models.ForeignKey(Goods, on_delete='CASCADE', related_name="modifications")
+    color = models.TextField(max_length=100)
+    size = models.TextField(max_length=30, choices=TYPE_OF_SIZE)
+

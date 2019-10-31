@@ -7,4 +7,6 @@ from .views import *
 
 urlpatterns = [
     path('catalog/', CatalogAPI.as_view()),
+    path('main/', MainAPI.as_view()),
+    path('goods/', GoodsAPI.as_view()),
 ]

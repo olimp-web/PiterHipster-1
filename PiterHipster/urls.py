@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from ph_products.api.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('piterhipster/', include('Piter_Hipster.urls'),
          )
 ]
+
+api_urls = (
+    path("products/", ProductListView.as_view()),
+    path("products/{id}/", ProductView.as_view()),
+    path("categories/", CategoriesListView.as_view()),
+)
+
+urlpatterns.append(path('api/', include((api_urls, "API"), namespace="API")))

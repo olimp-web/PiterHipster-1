@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'Piter_Hipster',
     'ph_products',
+    'ph_orders'
 ]
 
 MIDDLEWARE = [

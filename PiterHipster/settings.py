@@ -129,6 +129,7 @@ STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = "/srv/piter-hipster/public/_static/"
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (

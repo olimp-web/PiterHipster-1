@@ -5,6 +5,10 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     title = models.TextField(max_length=100)
 
+    class Meta:
+        verbose_name = "категория"
+        verbose_name_plural = "категории"
+
 
 class Product(models.Model):
 
@@ -16,12 +20,20 @@ class Product(models.Model):
     left_in_stock = models.IntegerField(verbose_name="осталось на складе", default=1)
     prime_cost = models.FloatField(blank=True, verbose_name="себестоимость")
 
+    class Meta:
+        verbose_name = "товар"
+        verbose_name_plural = "товары"
+
 
 class ProductPhoto(models.Model):
     id_goods = models.ForeignKey('ph_products.Product', on_delete='CASCADE', related_name="photos")
     image = models.ImageField()
     is_main = models.BooleanField(default=False)
     alt = models.TextField(max_length=100, default='Product picture')
+
+    class Meta:
+        verbose_name = "фото товара"
+        verbose_name_plural = "фото товаров"
 
 
 TYPE_OF_SIZE = (
@@ -41,3 +53,7 @@ class ProductModification(models.Model):
     color = models.TextField(max_length=100)
     size = models.TextField(max_length=30, choices=TYPE_OF_SIZE)
     left_in_stock = models.IntegerField(verbose_name="осталось на складе", default=1)
+
+    class Meta:
+        verbose_name = "модификация"
+        verbose_name_plural = "модификации товара"

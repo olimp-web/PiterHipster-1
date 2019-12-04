@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from ph_products.api.views import *
 
+admin.site.site_header = "PITER HIPSTER | ADMIN"
+
 urlpatterns = [
+    path(r'^jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     path('piterhipster/', include('Piter_Hipster.urls'),
          )

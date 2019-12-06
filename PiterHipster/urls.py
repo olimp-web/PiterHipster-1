@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from ph_products.api.views import *
+from ph_orders.api.views import *
 
 admin.site.site_header = "PITER HIPSTER | ADMIN"
 
@@ -30,6 +31,7 @@ api_urls = (
     path("products/", ProductListView.as_view()),
     path("products/{id}/", ProductView.as_view()),
     path("categories/", CategoriesListView.as_view()),
+    path("orders/", CreateOrderAPIView.as_view())
 )
 
 urlpatterns.append(path('api/', include((api_urls, "API"), namespace="API")))

@@ -135,7 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAdminUser',
+        # 'rest_framework.permissions.IsAdminUser',
         'rest_framework.permissions.AllowAny',
     ),
     'PAGE_SIZE': 10,
@@ -149,14 +149,15 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework_json_api.pagination.PageNumberPagination',
     'DEFAULT_PARSER_CLASSES': (
-        'rest_framework_json_api.parsers.JSONParser',
+        'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser'
     ),
     'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework_json_api.renderers.JSONRenderer',
+        'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
 }
 

@@ -20,10 +20,10 @@ class GoodsInOrdersAdmin(admin.ModelAdmin):
     list_display = ("id", "id_goods", "id_order", "Price")
 
 
-admin.site.register(Goods, GoodsAdmin)
-admin.site.register(Categories, CategoriesAdmin)
-admin.site.register(Photos, PhotosAdmin)
-admin.site.register(Modifications, ModificationsAdmin)
-admin.site.register(Delivery, DeliveryAdmin)
-admin.site.register(Orders, OrdersAdmin)
-admin.site.register(GoodsInOrders, GoodsInOrdersAdmin)
+# admin.site.register(Goods, GoodsAdmin)
+# admin.site.register(Categories, CategoriesAdmin)
+# admin.site.register(Photos, PhotosAdmin)
+# admin.site.register(Modifications, ModificationsAdmin)
+# admin.site.register(Delivery, DeliveryAdmin)
+# admin.site.register(Orders, OrdersAdmin)
+# admin.site.register(GoodsInOrders, GoodsInOrdersAdmin)

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     title = models.TextField(max_length=100)
-    cover_image = models.ImageField()
+    cover_image = models.ImageField(blank=True)
 
     class Meta:
         verbose_name = "категория"

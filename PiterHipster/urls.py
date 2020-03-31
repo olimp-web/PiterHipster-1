@@ -29,7 +29,7 @@ urlpatterns = [
 
 api_urls = (
     path("products/", ProductListView.as_view()),
-    path("products/{id}/", ProductView.as_view()),
+    path("products/<int:pk>/", ProductView.as_view()),
     path("categories/", CategoriesListView.as_view()),
     path("orders/", CreateOrderAPIView.as_view())
 )
